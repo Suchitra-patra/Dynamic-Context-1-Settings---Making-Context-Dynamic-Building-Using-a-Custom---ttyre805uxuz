@@ -1,22 +1,14 @@
-import React from "react";
-import { useContext, useState } from "react";
-import { UserContext } from "../context/userContext";
+import React from "react"
+import { useContext } from "react"
+import { UserContext } from "../context/userContext"
 
-export const Settings = () => {
-    const [greeting, setGreeting] = useState("");
+export const Settings = () =>{
+    const {changeGreeting} = useContext(UserContext)
 
-    // to be implemented in context
-    const { changeGreeting } = useContext(UserContext);
-
-    const handleInput = () => {
-        // e.preventDefault();
-        changeGreeting(greeting);
-    };
-
-    return (
-        <div style={{ border: "5px solid red", padding: "8px" }} id="settings">
+    return(
+        <div style={{border:'5px solid red',padding:'8px'}} id="settings">
             <h4>Settings</h4>
-            <input type={"text"} onChange={(e) => { setGreeting(e.target.value) }} onKeyUp={handleInput} />
+            <input type={'text'} onChange={(e)=>changeGreeting(e.target.value)} />
         </div>
-    );
-};
+    )
+}
